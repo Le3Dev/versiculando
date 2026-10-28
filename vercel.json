@@ -1,0 +1,43 @@
+{
+  "cleanUrls": true,
+  "functions": {
+    "api/planner.js": {
+      "includeFiles": "{fonts/pdf/**,b/livros.json}",
+      "memory": 1024,
+      "maxDuration": 20
+    },
+    "api/calendario.js": {
+      "includeFiles": "b/livros.json"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/hoje",
+      "destination": "/ler"
+    },
+    {
+      "source": "/ler/:livro/:cap",
+      "destination": "/ler"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/b/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, stale-while-revalidate=604800"
+        }
+      ]
+    },
+    {
+      "source": "/fonts/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ]
+}

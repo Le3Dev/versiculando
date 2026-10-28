@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Leitura de hoje · Versiculando</title>
+<meta name="description" content="Leia a Bíblia capítulo por capítulo na tradução Bíblia Livre e acompanhe o seu plano de leitura.">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Versiculando">
+<link rel="icon" href="/img/icone.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/img/icone-180.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="preload" href="/fonts/literata-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/css/site.css">
+<link rel="stylesheet" href="/css/ler.css">
+</head>
+<body>
+<header class="topo barra" id="barra">
+  <a class="logo" href="/" aria-label="Versiculando, montar um plano"><svg viewBox="0 0 14 24" aria-hidden="true"><path d="M0 0h14v24l-7-5.2L0 24z" fill="#B3122E"/></svg><span class="logo-t">Versiculando</span></a>
+  <div class="barra-acoes">
+    <button type="button" class="ic-btn" id="btnLivros" aria-label="Escolher livro e capítulo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5C6.5 4 9.5 4 12 6c2.5-2 5.5-2 8-.5V19c-2.5-1.5-5.5-1.5-8 .5-2.5-2-5.5-2-8-.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 6v13.5" stroke="currentColor" stroke-width="1.8"/></svg></button>
+    <button type="button" class="ic-btn" id="btnMenor" aria-label="Diminuir a letra">A<small>−</small></button>
+    <button type="button" class="ic-btn" id="btnMaior" aria-label="Aumentar a letra">A<small>+</small></button>
+  </div>
+</header>
+
+<main id="app" class="app" tabindex="-1"><p class="carregando">Carregando…</p></main>
+
+<div class="folha" id="livros" hidden>
+  <div class="folha-fundo" data-fechar></div>
+  <div class="folha-painel" role="dialog" aria-modal="true" aria-labelledby="tLivros">
+    <button class="folha-x" type="button" data-fechar aria-label="Fechar">×</button>
+    <h2 id="tLivros">Livros</h2>
+    <div id="livrosCorpo"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<footer class="rodape">
+  <div class="in">
+    <p>Texto bíblico: Bíblia Livre (BLIVRE), Copyright © Diego Santos, Mario Sérgio e Marco Teles, fevereiro de 2018. <a href="https://creativecommons.org/licenses/by/3.0/br/" rel="license noopener" target="_blank">Licença Creative Commons Atribuição 3.0 Brasil</a>.</p>
+    <p>Seu progresso fica salvo neste aparelho. <a href="/">Montar um plano de leitura</a></p>
+  </div>
+</footer>
+
+<script src="/js/plano.js"></script>
+<script src="/js/leitura.js" defer></script>
+</body>
+</html>

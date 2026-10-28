@@ -1,0 +1,6 @@
+Texto bíblico: Bíblia Livre (BLIVRE)
+Copyright © Diego Santos, Mario Sérgio e Marco Teles, fevereiro de 2018.
+Licença Creative Commons Atribuição 3.0 Brasil: https://creativecommons.org/licenses/by/3.0/br/
+Fonte: https://github.com/blivre/BibliaLivre (textos/f4/tr)
+Os arquivos desta pasta foram convertidos para JSON por scripts/build_bible.py
+(notas de rodapé e referências cruzadas removidas; texto sem alterações).

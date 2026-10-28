@@ -1,0 +1,77 @@
+@font-face{font-family:"Literata";font-weight:400;font-style:normal;font-display:swap;src:url(/fonts/literata-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:"Literata";font-weight:400;font-style:italic;font-display:swap;src:url(/fonts/literata-latin-400-italic.woff2) format("woff2")}
+@font-face{font-family:"Literata";font-weight:600;font-style:normal;font-display:swap;src:url(/fonts/literata-latin-600-normal.woff2) format("woff2")}
+@font-face{font-family:"Literata";font-weight:700;font-style:normal;font-display:swap;src:url(/fonts/literata-latin-700-normal.woff2) format("woff2")}
+@font-face{font-family:"Caveat";font-weight:700;font-style:normal;font-display:swap;src:url(/fonts/caveat-latin-700-normal.woff2) format("woff2")}
+
+:root{
+  --papel:#FFFFFF; --tinta:#1F2A44; --tinta-2:#5B6378; --linha:#E3DFD6; --fraco:#F4F2ED; --fraco-2:#EAE6DD;
+  --fita:#B3122E; --fita-esc:#8E0E25;
+  --amarelo:#FFE45E; --azul:#BEE1FF; --rosa:#FFC4DE; --verde:#B9F2A1;
+  --amarelo-f:#C99A00; --azul-f:#2F7BC4; --rosa-f:#C84B80; --verde-f:#3D9A40;
+  --marca:var(--amarelo); --marca-f:var(--amarelo-f);
+  --serif:"Literata",Georgia,"Times New Roman",serif; --mao:"Caveat","Segoe Print","Bradley Hand",cursive;
+  --r:14px; --gut:16px;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+body{margin:0;background:var(--papel);color:var(--tinta);font:400 17px/1.55 var(--serif);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img,svg,canvas{display:block;max-width:100%}
+a{color:inherit}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--tinta);outline-offset:3px;border-radius:6px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+[hidden]{display:none!important}
+
+/* marca */
+.logo{display:inline-flex;align-items:center;gap:9px;text-decoration:none;font-weight:700;font-size:19px;letter-spacing:-.01em}
+.logo svg{width:14px;height:24px}
+.topo{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px var(--gut);max-width:1120px;margin:0 auto}
+.topo nav a{font-size:15px;font-weight:600;text-decoration:none;padding:8px 2px;border-bottom:2px solid var(--marca)}
+
+/* botões */
+.btn{appearance:none;border:0;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 22px;border-radius:999px;font-weight:700;font-size:17px;text-decoration:none;background:var(--tinta);color:#fff;transition:transform .12s ease,background .15s}
+.btn:active{transform:scale(.98)}
+.btn.fita{background:var(--fita)}
+.btn.fita:hover{background:var(--fita-esc)}
+.btn.claro{background:var(--fraco);color:var(--tinta)}
+.btn.claro:hover{background:var(--fraco-2)}
+.btn.linha{background:transparent;color:var(--tinta);box-shadow:inset 0 0 0 1.5px var(--tinta)}
+.btn.bloco{display:flex;width:100%}
+.btn svg{width:20px;height:20px;flex:none}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+.link{background:none;border:0;padding:0;cursor:pointer;text-decoration:underline;text-underline-offset:3px;font-weight:600}
+
+/* marca-texto */
+.mt{background:linear-gradient(transparent 8%,var(--marca) 8%,var(--marca) 88%,transparent 88%);padding:0 .12em;-webkit-box-decoration-break:clone;box-decoration-break:clone;border-radius:.2em .5em .3em .45em}
+
+/* ---- capa do planner (miniatura viva) ---- */
+.capa{container-type:inline-size;position:relative;aspect-ratio:1/1.414;width:100%;background:#fff;border-radius:4px 10px 10px 4px;box-shadow:0 1px 0 var(--linha),0 22px 40px -18px rgba(31,42,68,.38),0 2px 6px rgba(31,42,68,.08);overflow:hidden;color:var(--tinta);transform:rotate(-1.6deg);transition:transform .4s ease}
+.capa::after{content:"";position:absolute;inset:0 auto 0 0;width:5.5cqw;background:linear-gradient(90deg,rgba(31,42,68,.08),transparent)}
+.capa-fita{position:absolute;top:0;right:12cqw;width:7.4cqw;height:65cqw;background:var(--fita);clip-path:polygon(0 0,100% 0,100% 100%,50% calc(100% - 4.6cqw),0 100%)}
+.capa-in{position:absolute;inset:8cqw 8cqw 6cqw 9cqw;display:flex;flex-direction:column}
+.capa-marca{margin:0;font-size:2.4cqw;font-weight:600;color:var(--tinta-2)}
+.capa-presente{margin:.4cqw 0 0;font:700 5cqw/1 var(--mao);color:var(--fita)}
+.capa-ano{margin:9cqw 0 0 -.8cqw;font-weight:700;font-size:22cqw;line-height:.8;color:var(--fraco-2);letter-spacing:-.02em}
+.capa-de{margin:6cqw 0 0;font-size:3.6cqw;font-weight:600;color:var(--tinta-2)}
+.capa-nome{margin:.6cqw 0 0 -1cqw;font:700 13cqw/1.02 var(--mao);white-space:nowrap;overflow:hidden;text-overflow:clip;max-width:80cqw}
+.capa-nome .vazio{color:#C6C1B6}
+.capa-obj{margin:1.4cqw 0 0;font-weight:700;font-size:6cqw;line-height:1.1}
+.capa-dur{margin:.8cqw 0 0;font-size:3cqw;color:var(--tinta-2)}
+.capa-pontos{margin-top:4.5cqw;display:grid;grid-template-columns:repeat(var(--cols,37),1fr);gap:.55cqw;max-width:78cqw}
+.capa-pontos i{aspect-ratio:1;border-radius:50%;box-shadow:inset 0 0 0 .18cqw #9AA0AE}
+.capa-pontos i:first-child{background:var(--marca);box-shadow:none}
+.capa-verso{margin:auto 0 0;padding-top:2.6cqw;border-top:.25cqw solid var(--linha);font-style:italic;font-size:2.9cqw;line-height:1.4}
+.capa-verso small{display:block;margin-top:1.4cqw;font-style:normal;font-weight:600;font-size:2cqw;color:var(--tinta-2)}
+
+/* rodapé */
+.rodape{border-top:1px solid var(--linha);margin-top:64px;padding:28px var(--gut) 44px;color:var(--tinta-2);font-size:14px;line-height:1.6}
+.rodape .in{max-width:1120px;margin:0 auto;display:grid;gap:14px}
+.rodape p{margin:0;max-width:68ch}
+.rodape a{font-weight:600}
+
+/* aviso flutuante */
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom));transform:translate(-50%,20px);opacity:0;pointer-events:none;background:var(--tinta);color:#fff;padding:12px 18px;border-radius:12px;font-size:15px;font-weight:600;transition:.25s;z-index:90;max-width:calc(100vw - 32px);text-align:center}
+.toast.on{opacity:1;transform:translate(-50%,0)}

@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Versiculando: seu plano para ler a Bíblia em 2027</title>
+<meta name="description" content="Monte seu plano de leitura da Bíblia em 4 perguntas: Bíblia inteira, Novo Testamento, Evangelhos ou Salmos e Provérbios. A leitura de cada dia no calendário do celular e um planner em PDF com o seu nome.">
+<link rel="canonical" href="https://versiculando.vercel.app/">
+<meta name="theme-color" content="#FFFFFF">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Versiculando">
+<meta property="og:url" content="https://versiculando.vercel.app/">
+<meta property="og:title" content="Monte seu plano para ler a Bíblia em 2027">
+<meta property="og:description" content="A leitura de cada dia no calendário do celular, com alarme, e um planner em PDF com o seu nome.">
+<meta property="og:image" content="https://versiculando.vercel.app/img/og.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/img/icone.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/img/icone-180.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="preload" href="/fonts/literata-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/caveat-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/css/site.css">
+<link rel="stylesheet" href="/css/home.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Versiculando","url":"https://versiculando.vercel.app/","applicationCategory":"LifestyleApplication","operatingSystem":"Web","inLanguage":"pt-BR","description":"Plano de leitura da Bíblia personalizado com calendário no celular e planner em PDF.","offers":{"@type":"Offer","price":"9.90","priceCurrency":"BRL"}}</script>
+</head>
+<body>
+<header class="topo">
+  <a class="logo" href="/" aria-label="Versiculando, início"><svg viewBox="0 0 14 24" aria-hidden="true"><path d="M0 0h14v24l-7-5.2L0 24z" fill="#B3122E"/></svg>Versiculando</a>
+  <nav><a id="navHoje" href="/hoje" hidden>Leitura de hoje</a></nav>
+</header>
+
+<main class="principal">
+  <div class="junto" id="junto" hidden><span class="junto-ic" aria-hidden="true">👋</span><p><b id="juntoNome"></b> te chamou pra ler junto. O plano já está escolhido igual ao dela, é só pôr o seu nome.</p></div>
+
+  <section class="hero" aria-labelledby="titulo">
+    <h1 id="titulo">Seu plano para ler a Bíblia em 2027</h1>
+    <p class="lead">Escolha o que ler e em quanto tempo. Cada leitura entra no calendário do seu celular, com alarme, e você ganha um planner em PDF com o seu nome na capa.</p>
+    <div class="campo campo-nome">
+      <label for="nome" class="rot">Quem vai ler?</label>
+      <input id="nome" class="txt" type="text" autocomplete="given-name" maxlength="28" placeholder="Nome que vai na capa" enterkeyhint="done">
+      <label class="marcar"><input type="checkbox" id="presente"><span>É um presente pra alguém</span></label>
+      <div class="presente" id="presenteBox" hidden>
+        <label for="de" class="rot pq">Seu nome, de quem está dando</label>
+        <input id="de" class="txt" type="text" maxlength="28" placeholder="Ex.: Mãe, Leandro, Tia Cris">
+        <label for="msg" class="rot pq">Recado na primeira página <span class="opc">(opcional)</span></label>
+        <textarea id="msg" class="txt" rows="3" maxlength="400" placeholder="Escreva com carinho. Vai aparecer com letra de mão."></textarea>
+      </div>
+    </div>
+
+  </section>
+
+  <aside class="lado" aria-label="Prévia da capa do planner">
+    <div class="capa-wrap">
+      <div class="capa" id="capa">
+        <div class="capa-fita"></div>
+        <div class="capa-in">
+          <p class="capa-marca">Versiculando</p>
+          <p class="capa-presente" id="cPresente" hidden>Um presente de <span></span></p>
+          <p class="capa-ano" id="cAno">2027</p>
+          <p class="capa-de">Plano de leitura de</p>
+          <p class="capa-nome"><span class="mt" id="cNome"><span class="vazio">seu nome</span></span></p>
+          <p class="capa-obj" id="cObj">Bíblia inteira</p>
+          <p class="capa-dur" id="cDur">em 1 ano</p>
+          <div class="capa-pontos" id="cPontos"></div>
+          <p class="capa-verso">Tua palavra é lâmpada para os meus pés e luz para o meu caminho.<small>Salmos 119.105</small></p>
+        </div>
+      </div>
+      <p class="capa-leg">A capa do seu planner, ao vivo.</p>
+    </div>
+  </aside>
+
+  <section class="montar" id="montar" aria-labelledby="tMontar">
+    <h2 id="tMontar" class="sr">Monte o seu plano</h2>
+
+    <fieldset class="campo">
+      <legend class="rot">O que você quer ler?</legend>
+      <div class="objs" id="objs"></div>
+    </fieldset>
+
+    <fieldset class="campo">
+      <legend class="rot">Em quanto tempo?</legend>
+      <div class="chips" id="durs"></div>
+    </fieldset>
+
+    <fieldset class="campo" id="ordemCampo">
+      <legend class="rot">Em que ordem?</legend>
+      <div class="chips" id="ordens"></div>
+    </fieldset>
+
+    <fieldset class="campo">
+      <legend class="rot">Em quais dias?</legend>
+      <div class="chips" id="semanas"></div>
+    </fieldset>
+
+    <fieldset class="campo">
+      <legend class="rot">Quando começa?</legend>
+      <div class="chips" id="inicios"></div>
+      <input type="date" id="dataOutra" class="txt data" hidden aria-label="Data de início">
+    </fieldset>
+
+    <div class="campo">
+      <label for="hora" class="rot">Que horas o celular te lembra?</label>
+      <input type="time" id="hora" class="txt hora" value="07:00">
+    </div>
+  </section>
+
+  <section class="previa" id="previa" aria-labelledby="tPrevia">
+    <h2 id="tPrevia">O seu plano</h2>
+    <p class="resumo" id="resumo"></p>
+    <p class="dica-ano">Cada ponto é um dia de leitura. Toque num dia para ver o que ler.</p>
+    <div class="ano" id="ano" role="group" aria-label="Calendário do plano: toque num dia para ver a leitura"></div>
+    <p class="diaInfo" id="diaInfo" aria-live="polite"></p>
+    <h3 class="sub">A primeira semana</h3>
+    <ol class="semana" id="semana"></ol>
+    <div class="acoes">
+      <a class="btn claro" id="lerDia1" href="/ler">Ler o dia 1 agora</a>
+      <button class="btn claro" id="btnStory" type="button">Postar nos Stories</button>
+    </div>
+  </section>
+
+  <section class="oferta" id="oferta" aria-labelledby="tOferta">
+    <h2 id="tOferta">Leve o plano completo</h2>
+    <ul class="itens">
+      <li><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 10h17M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><div><b>Cada leitura no calendário do celular</b><p>No horário que você escolheu, com alarme e o link do texto do dia. Funciona no iPhone e no Android, sem instalar nada.</p></div></li>
+      <li><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 11h7M9 15h7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><div><b>Planner em PDF com o seu nome</b><p id="itemPlanner">Capa personalizada, uma página por mês pra marcar cada leitura, quadro dos livros pra pintar, diário e certificado de conclusão. Pra imprimir ou usar no tablet.</p></div></li>
+      <li><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 18.5h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><div><b>Papel de parede pro celular</b><p>O mapa do seu ano na tela de bloqueio: o que você vai ler em cada mês.</p></div></li>
+      <li><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5.5C6.5 4 9.5 4 12 6c2.5-2 5.5-2 8-.5V19c-2.5-1.5-5.5-1.5-8 .5-2.5-2-5.5-2-8-.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 6v13.5" stroke="currentColor" stroke-width="1.8"/></svg></span><div><b>Página da leitura de hoje</b><p>Abre o texto do dia, marca o que você leu e mostra quantos dias seguidos você já leu.</p></div></li>
+    </ul>
+    <div class="amostra" aria-label="Exemplo de páginas do planner">
+      <figure><img src="/img/ex-capa.webp" alt="Capa do planner com o nome Ana Beatriz" loading="lazy" width="300" height="424"><figcaption>Capa</figcaption></figure>
+      <figure><img src="/img/ex-mes.webp" alt="Página de janeiro com uma leitura por dia para marcar" loading="lazy" width="300" height="424"><figcaption>Um mês por página</figcaption></figure>
+      <figure><img src="/img/ex-ano.webp" alt="Página com o plano do ano inteiro em minicalendários" loading="lazy" width="300" height="424"><figcaption>O ano num olhar</figcaption></figure>
+      <figure><img src="/img/ex-livros.webp" alt="Quadro dos livros com um quadradinho por capítulo para pintar" loading="lazy" width="300" height="424"><figcaption>Quadro dos livros</figcaption></figure>
+    </div>
+    <div class="preco">
+      <p><span class="valor">R$ 9,90</span><span class="unico">pagamento único, por Pix</span></p>
+      <button class="btn fita bloco" id="btnComprar" type="button">Pagar R$ 9,90 com Pix</button>
+      <p class="nota" id="notaNome" hidden>Escreva o nome que vai na capa antes de pagar.</p>
+    </div>
+  </section>
+
+  <section class="entrega" id="entrega" hidden aria-labelledby="tEntrega" tabindex="-1">
+    <h2 id="tEntrega">Tudo pronto!</h2>
+    <p class="resumo" id="entregaResumo"></p>
+    <div class="inapp" id="inapp" hidden><b>Abra no navegador para baixar.</b> Toque nos três pontinhos no canto da tela e escolha “Abrir no navegador” (Safari ou Chrome). Os arquivos baixam melhor por lá.</div>
+
+    <div class="passo">
+      <h3>1. Coloque as leituras no calendário</h3>
+      <p id="calTexto"></p>
+      <div class="acoes col" id="calBtns"></div>
+    </div>
+    <div class="passo">
+      <h3>2. Baixe o seu planner</h3>
+      <p id="pdfTexto">PDF em tamanho A4. Dá pra imprimir em casa ou numa copiadora.</p>
+      <div class="acoes col"><a class="btn" id="pdfBaixar" href="#" download>Baixar planner em PDF</a><a class="btn claro" id="pdfAbrir" href="#" target="_blank" rel="noopener">Abrir para ver</a></div>
+    </div>
+    <div class="passo">
+      <h3>3. Salve o papel de parede</h3>
+      <p>Toque e segure na imagem para salvar na galeria. Depois, escolha como papel de parede da tela de bloqueio.</p>
+      <div class="wall"><img id="wallImg" alt="Papel de parede com o mapa do seu plano de leitura"></div>
+      <div class="acoes col"><button class="btn claro" id="wallSalvar" type="button">Salvar imagem</button></div>
+    </div>
+    <div class="passo">
+      <h3>4. Guarde a página da leitura de hoje</h3>
+      <p>É por ela que você lê o texto do dia e marca o que já leu. Adicione à tela de início do celular para abrir como um app.</p>
+      <div class="acoes col"><a class="btn" id="hojeLink" href="/hoje">Abrir a leitura de hoje</a></div>
+    </div>
+    <div class="passo" id="passoPresente" hidden>
+      <h3>5. Entregue o presente</h3>
+      <p>Mande o link para a pessoa. Ela abre o recado, baixa o planner e coloca as leituras no calendário dela.</p>
+      <div class="acoes col"><a class="btn" id="presenteZap" href="#" target="_blank" rel="noopener">Enviar pelo WhatsApp</a><button class="btn claro" id="presenteCopiar" type="button">Copiar link do presente</button></div>
+    </div>
+    <div class="passo">
+      <h3>Chame alguém pra ler junto</h3>
+      <p>Mande o seu plano para alguém da família, do grupo ou da igreja. A pessoa abre com tudo igual ao seu.</p>
+      <div class="acoes col"><a class="btn claro" id="juntoZap" href="#" target="_blank" rel="noopener">Convidar pelo WhatsApp</a></div>
+    </div>
+    <p class="nota">Seus planos ficam salvos neste aparelho. Pra montar outro, é só mudar as opções lá em cima.</p>
+  </section>
+
+  <section class="faq" aria-labelledby="tFaq">
+    <h2 id="tFaq">Perguntas frequentes</h2>
+    <details><summary>Que tradução da Bíblia vocês usam?</summary><p>O texto que aparece no site e no planner é da <b>Bíblia Livre</b>, uma tradução em português de hoje, baseada na Almeida e liberada para uso. Mas o plano serve para qualquer Bíblia: você pode ler na sua NVI, ARA, NAA ou na Bíblia de papel.</p></details>
+    <details><summary>Preciso instalar algum aplicativo?</summary><p>Não. As leituras entram no calendário que já vem no seu celular, e a página da leitura de hoje abre no navegador. Se quiser, adicione ela à tela de início.</p></details>
+    <details><summary>Funciona no iPhone e no Android?</summary><p>Sim. No iPhone, todas as leituras entram no Calendário, uma por dia, com alarme. No Android, um lembrete diário entra no Google Agenda e abre a leitura do dia.</p></details>
+    <details><summary>E se eu atrasar?</summary><p>Acontece com todo mundo. Os dias de folga existem para pôr a leitura em dia, e a página de hoje mostra o que ficou para trás. Se preferir, só siga do dia de hoje.</p></details>
+    <details><summary>Posso imprimir o planner?</summary><p>Pode. Ele vem em A4, com fundo branco para gastar pouca tinta. Também dá pra usar no tablet, em apps de anotação.</p></details>
+    <details><summary>Posso dar de presente?</summary><p>Pode e é uma ótima ideia para o Natal. Marque “É um presente”, escreva um recado e, depois do pagamento, mande o link para a pessoa. Ela recebe tudo com o nome dela.</p></details>
+    <details><summary>Como recebo depois de pagar?</summary><p>Na hora, aqui mesmo na página: os botões do calendário, do planner e do papel de parede aparecem assim que você confirma o Pix.</p></details>
+  </section>
+</main>
+
+<div class="folha" id="folha" hidden>
+  <div class="folha-fundo" data-fechar></div>
+  <div class="folha-painel" role="dialog" aria-modal="true" aria-labelledby="tPix">
+    <button class="folha-x" type="button" data-fechar aria-label="Fechar">×</button>
+    <h2 id="tPix">Pague R$ 9,90 com Pix</h2>
+    <ol class="pix-passos"><li>Copie o código abaixo.</li><li>No app do seu banco, entre em Pix e escolha “Pix copia e cola”.</li><li>Cole, confira o valor e pague.</li></ol>
+    <div class="pix-codigo"><code id="pixCodigo"></code></div>
+    <button class="btn bloco" id="pixCopiar" type="button">Copiar código Pix</button>
+    <details class="pix-qr"><summary>Prefere QR code? Mostrar</summary><img id="pixQr" alt="QR code do Pix de R$ 9,90" width="220" height="220"></details>
+    <div class="pago" id="pagoBox" hidden>
+      <p>Depois de pagar, toque abaixo para receber o seu plano.</p>
+      <button class="btn fita bloco" id="btnPago" type="button">Já paguei, quero meu plano</button>
+    </div>
+  </div>
+</div>
+
+<div class="story" id="story" hidden>
+  <div class="folha-fundo" data-fechar-story></div>
+  <div class="story-painel" role="dialog" aria-modal="true" aria-label="Imagem para os Stories">
+    <button class="folha-x" type="button" data-fechar-story aria-label="Fechar">×</button>
+    <img id="storyImg" alt="Imagem para os Stories com o seu plano">
+    <p>Toque e segure para salvar. Depois poste nos Stories ou no status do WhatsApp.</p>
+    <button class="btn bloco" id="storyCompartilhar" type="button">Compartilhar imagem</button>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<footer class="rodape">
+  <div class="in">
+    <p>Textos bíblicos: Bíblia Livre (BLIVRE), Copyright © Diego Santos, Mario Sérgio e Marco Teles, fevereiro de 2018. <a href="https://creativecommons.org/licenses/by/3.0/br/" rel="license noopener" target="_blank">Licença Creative Commons Atribuição 3.0 Brasil</a>.</p>
+    <p>Versiculando monta o plano no seu aparelho. Não pedimos cadastro e não guardamos os seus dados.</p>
+  </div>
+</footer>
+
+<script src="/js/plano.js"></script>
+<script src="/vendor/qrcode.js" defer></script>
+<script src="/js/cards.js" defer></script>
+<script src="/js/app.js" defer></script>
+</body>
+</html>

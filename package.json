@@ -1,0 +1,11 @@
+{
+  "name": "versiculando",
+  "private": true,
+  "type": "module",
+  "description": "Plano de leitura da Bíblia personalizado: calendário, planner em PDF e leitura do dia.",
+  "dependencies": {
+    "@pdf-lib/fontkit": "1.1.1",
+    "pdf-lib": "1.17.1",
+    "qrcode-generator": "1.4.4"
+  }
+}

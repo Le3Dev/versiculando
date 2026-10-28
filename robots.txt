@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /hoje
+Sitemap: https://versiculando.vercel.app/sitemap.xml
