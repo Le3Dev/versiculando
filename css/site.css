@@ -56,7 +56,7 @@ button,input,select,textarea{font:inherit;color:inherit}
 .capa-presente{margin:.4cqw 0 0;font:700 5cqw/1 var(--mao);color:var(--fita)}
 .capa-ano{margin:9cqw 0 0 -.8cqw;font-weight:700;font-size:22cqw;line-height:.8;color:var(--fraco-2);letter-spacing:-.02em}
 .capa-de{margin:6cqw 0 0;font-size:3.6cqw;font-weight:600;color:var(--tinta-2)}
-.capa-nome{margin:.6cqw 0 0 -1cqw;font:700 13cqw/1.02 var(--mao);white-space:nowrap;overflow:hidden;text-overflow:clip;max-width:80cqw}
+.capa-nome{margin:.6cqw 0 0 -1cqw;font:700 13cqw/1.02 var(--mao);white-space:nowrap;overflow:hidden;text-overflow:clip;max-width:70cqw;min-height:13.3cqw;display:flex;align-items:flex-end}
 .capa-nome .vazio{color:#C6C1B6}
 .capa-obj{margin:1.4cqw 0 0;font-weight:700;font-size:6cqw;line-height:1.1}
 .capa-dur{margin:.8cqw 0 0;font-size:3cqw;color:var(--tinta-2)}

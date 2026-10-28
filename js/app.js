@@ -74,6 +74,7 @@
     document.documentElement.style.setProperty('--marca', `var(${COR[o.g][0]})`);
     document.documentElement.style.setProperty('--marca-f', `var(${COR[o.g][1]})`);
     const nm = st.nome.trim(); $('#cNome').innerHTML = nm ? esc(nm) : '<span class="vazio">seu nome</span>';
+    $('#cNome').parentElement.style.fontSize = Math.max(6.5, Math.min(13, 13 * 10 / Math.max(10, nm.length))) + 'cqw';
     const pr = $('#cPresente'); pr.hidden = !(st.presente && st.de.trim()); pr.querySelector('span').textContent = st.de.trim();
     const a = o.s.slice(0, 4), b = plano.fim.slice(0, 4); $('#cAno').textContent = a === b ? a : a + '–' + b.slice(2);
     $('#cObj').textContent = G.nome;
