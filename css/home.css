@@ -46,8 +46,8 @@ textarea.txt{min-height:96px;resize:vertical;font:700 22px/1.25 var(--mao)}
 .obj input{position:absolute;opacity:0;pointer-events:none}
 .obj .cx{display:flex;flex-direction:column;justify-content:space-between;gap:16px;height:100%;min-height:112px;padding:14px 14px 13px;border-radius:var(--r);border:1.5px solid var(--linha);background:#fff;transition:border-color .15s,box-shadow .15s}
 .obj .t{display:block}
-.obj b{display:block;font-size:18px;line-height:1.15}
-.obj small{display:block;margin-top:4px;font-size:13.5px;color:var(--tinta-2);line-height:1.3}
+.obj b{display:block;font-size:19px;line-height:1.15}
+.obj small{display:block;margin-top:4px;font-size:15px;color:var(--tinta-2);line-height:1.3}
 .obj i{display:block;width:44px;height:10px;border-radius:3px 6px 4px 5px;background:var(--c)}
 .obj input:checked+.cx{border-color:var(--tinta);box-shadow:inset 0 0 0 1px var(--tinta)}
 .obj input:focus-visible+.cx{outline:3px solid var(--tinta);outline-offset:3px}
@@ -55,8 +55,8 @@ textarea.txt{min-height:96px;resize:vertical;font:700 22px/1.25 var(--mao)}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .chip{position:relative;cursor:pointer}
 .chip input{position:absolute;opacity:0;pointer-events:none}
-.chip span{display:flex;flex-direction:column;justify-content:center;min-height:50px;padding:8px 16px;border-radius:12px;border:1.5px solid var(--linha);background:#fff;font-weight:600;font-size:16px;line-height:1.2;transition:border-color .15s,background .15s}
-.chip small{font-weight:400;font-size:13px;color:var(--tinta-2);margin-top:2px}
+.chip span{display:flex;flex-direction:column;justify-content:center;min-height:54px;padding:8px 18px;border-radius:12px;border:1.5px solid var(--linha);background:#fff;font-weight:600;font-size:17px;line-height:1.2;transition:border-color .15s,background .15s}
+.chip small{font-weight:400;font-size:14px;color:var(--tinta-2);margin-top:2px}
 .chip input:checked+span{border-color:var(--tinta);background:var(--tinta);color:#fff}
 .chip input:checked+span small{color:#CDD3E1}
 .chip input:focus-visible+span{outline:3px solid var(--tinta);outline-offset:3px}
@@ -80,7 +80,7 @@ textarea.txt{min-height:96px;resize:vertical;font:700 22px/1.25 var(--mao)}
 .diaInfo b{font-weight:700}
 .sub{margin:22px 0 10px;font-size:18px;font-weight:700}
 .semana{list-style:none;margin:0;padding:0;border-top:1px solid var(--linha)}
-.semana li{display:grid;grid-template-columns:72px 1fr auto;gap:12px;align-items:baseline;padding:11px 0;border-bottom:1px solid var(--linha);font-size:16px}
+.semana li{display:grid;grid-template-columns:76px 1fr auto;gap:12px;align-items:baseline;padding:12px 0;border-bottom:1px solid var(--linha);font-size:17px}
 .semana .d{font-weight:700}
 .semana .d small{display:block;font-weight:400;font-size:13px;color:var(--tinta-2)}
 .semana .min{font-size:13.5px;color:var(--tinta-2);white-space:nowrap}
@@ -151,3 +151,18 @@ textarea.txt{min-height:96px;resize:vertical;font:700 22px/1.25 var(--mao)}
 .amostra img{width:100%;height:auto;border-radius:4px;background:#fff;box-shadow:0 1px 0 var(--linha),0 10px 22px -12px rgba(31,42,68,.45)}
 .amostra figcaption{margin-top:8px;font-size:13px;color:var(--tinta-2)}
 @media (min-width:560px){.amostra{margin:26px -32px 0;padding:4px 32px 10px}}
+
+/* opções de dias e horário recolhidas */
+.mais{padding:0}
+.mais>summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:1fr auto;gap:2px 12px;align-items:center;padding:22px 0}
+.mais>summary::-webkit-details-marker{display:none}
+.mais>summary .rot{margin:0}
+.mais-resumo{grid-column:1;font-size:16px;color:var(--tinta-2);line-height:1.45}
+.mais-mudar{grid-column:2;grid-row:1/3;font-weight:700;font-size:16px;padding:10px 16px;border-radius:999px;background:var(--fraco)}
+.mais[open] .mais-mudar{background:var(--tinta);color:#fff}
+.mais[open]>summary .mais-mudar::after{content:""}
+.sub-campo{border:0;margin:0;padding:6px 0 18px;min-width:0}
+.sub-campo legend.rot{float:left;width:100%}
+.sub-campo legend.rot+*{clear:both}
+#btnVer{margin:8px 0 6px}
+.passo.destaque{border-color:var(--tinta);background:#fff}

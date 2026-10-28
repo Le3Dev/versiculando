@@ -83,26 +83,28 @@
       <div class="chips" id="durs"></div>
     </fieldset>
 
-    <fieldset class="campo" id="ordemCampo">
-      <legend class="rot">Em que ordem?</legend>
-      <div class="chips" id="ordens"></div>
-    </fieldset>
+    <details class="campo mais" id="mais">
+      <summary><span class="rot">Dias e horário</span><span class="mais-resumo" id="maisResumo"></span><span class="mais-mudar">Mudar</span></summary>
+      <fieldset class="sub-campo" id="ordemCampo">
+        <legend class="rot pq">Em que ordem?</legend>
+        <div class="chips" id="ordens"></div>
+      </fieldset>
+      <fieldset class="sub-campo">
+        <legend class="rot pq">Em quais dias?</legend>
+        <div class="chips" id="semanas"></div>
+      </fieldset>
+      <fieldset class="sub-campo">
+        <legend class="rot pq">Quando começa?</legend>
+        <div class="chips" id="inicios"></div>
+        <input type="date" id="dataOutra" class="txt data" hidden aria-label="Data de início">
+      </fieldset>
+      <div class="sub-campo">
+        <label for="hora" class="rot pq">Que horas o celular te lembra?</label>
+        <input type="time" id="hora" class="txt hora" value="07:00">
+      </div>
+    </details>
 
-    <fieldset class="campo">
-      <legend class="rot">Em quais dias?</legend>
-      <div class="chips" id="semanas"></div>
-    </fieldset>
-
-    <fieldset class="campo">
-      <legend class="rot">Quando começa?</legend>
-      <div class="chips" id="inicios"></div>
-      <input type="date" id="dataOutra" class="txt data" hidden aria-label="Data de início">
-    </fieldset>
-
-    <div class="campo">
-      <label for="hora" class="rot">Que horas o celular te lembra?</label>
-      <input type="time" id="hora" class="txt hora" value="07:00">
-    </div>
+    <button class="btn bloco" id="btnVer" type="button">Ver o meu plano</button>
   </section>
 
   <section class="previa" id="previa" aria-labelledby="tPrevia">
@@ -115,7 +117,7 @@
     <ol class="semana" id="semana"></ol>
     <div class="acoes">
       <a class="btn claro" id="lerDia1" href="/ler">Ler o dia 1 agora</a>
-      <button class="btn claro" id="btnStory" type="button">Postar nos Stories</button>
+      <button class="btn claro" id="btnStory" type="button">Mandar no WhatsApp</button>
     </div>
   </section>
 
@@ -123,7 +125,7 @@
     <h2 id="tOferta">Leve o plano completo</h2>
     <ul class="itens">
       <li><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 10h17M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><div><b>Cada leitura no calendário do celular</b><p>No horário que você escolheu, com alarme e o link do texto do dia. Funciona no iPhone e no Android, sem instalar nada.</p></div></li>
-      <li><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 11h7M9 15h7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><div><b>Planner em PDF com o seu nome</b><p id="itemPlanner">Capa personalizada, uma página por mês pra marcar cada leitura, quadro dos livros pra pintar, diário e certificado de conclusão. Pra imprimir ou usar no tablet.</p></div></li>
+      <li><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 11h7M9 15h7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><div><b>Planner em PDF com o seu nome, para imprimir</b><p id="itemPlanner">Capa personalizada, uma página por mês pra marcar cada leitura, quadro dos livros pra pintar, diário e certificado de conclusão. Pra imprimir ou usar no tablet.</p></div></li>
       <li><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 18.5h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><div><b>Papel de parede pro celular</b><p>O mapa do seu ano na tela de bloqueio: o que você vai ler em cada mês.</p></div></li>
       <li><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5.5C6.5 4 9.5 4 12 6c2.5-2 5.5-2 8-.5V19c-2.5-1.5-5.5-1.5-8 .5-2.5-2-5.5-2-8-.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 6v13.5" stroke="currentColor" stroke-width="1.8"/></svg></span><div><b>Página da leitura de hoje</b><p>Abre o texto do dia, marca o que você leu e mostra quantos dias seguidos você já leu.</p></div></li>
     </ul>
@@ -145,15 +147,20 @@
     <p class="resumo" id="entregaResumo"></p>
     <div class="inapp" id="inapp" hidden><b>Abra no navegador para baixar.</b> Toque nos três pontinhos no canto da tela e escolha “Abrir no navegador” (Safari ou Chrome). Os arquivos baixam melhor por lá.</div>
 
+    <div class="passo destaque">
+      <h3>Guarde tudo no seu WhatsApp</h3>
+      <p>Mande os links para você mesmo e nunca mais perca. Na lista de contatos, escolha o seu próprio nome (aparece como “Você”).</p>
+      <div class="acoes col"><a class="btn" id="guardarZap" href="#" target="_blank" rel="noopener">Mandar os links para o meu WhatsApp</a></div>
+    </div>
     <div class="passo">
       <h3>1. Coloque as leituras no calendário</h3>
       <p id="calTexto"></p>
       <div class="acoes col" id="calBtns"></div>
     </div>
     <div class="passo">
-      <h3>2. Baixe o seu planner</h3>
+      <h3>2. Abra o seu planner</h3>
       <p id="pdfTexto">PDF em tamanho A4. Dá pra imprimir em casa ou numa copiadora.</p>
-      <div class="acoes col"><a class="btn" id="pdfBaixar" href="#" download>Baixar planner em PDF</a><a class="btn claro" id="pdfAbrir" href="#" target="_blank" rel="noopener">Abrir para ver</a></div>
+      <div class="acoes col"><a class="btn" id="pdfAbrir" href="#" target="_blank" rel="noopener">Abrir o planner</a><a class="btn claro" id="pdfBaixar" href="#" download>Baixar o arquivo</a></div>
     </div>
     <div class="passo">
       <h3>3. Salve o papel de parede</h3>
@@ -187,6 +194,7 @@
     <details><summary>E se eu atrasar?</summary><p>Acontece com todo mundo. Os dias de folga existem para pôr a leitura em dia, e a página de hoje mostra o que ficou para trás. Se preferir, só siga do dia de hoje.</p></details>
     <details><summary>Posso imprimir o planner?</summary><p>Pode. Ele vem em A4, com fundo branco para gastar pouca tinta. Também dá pra usar no tablet, em apps de anotação.</p></details>
     <details><summary>Posso dar de presente?</summary><p>Pode e é uma ótima ideia para o Natal. Marque “É um presente”, escreva um recado e, depois do pagamento, mande o link para a pessoa. Ela recebe tudo com o nome dela.</p></details>
+    <details><summary>Não sou muito de mexer no celular. Consigo?</summary><p>Consegue. É escrever o nome, escolher o que ler e pagar o Pix. Depois, o próprio celular te avisa todo dia no horário marcado. Se preferir, peça para alguém da família montar junto com você.</p></details>
     <details><summary>Como recebo depois de pagar?</summary><p>Na hora, aqui mesmo na página: os botões do calendário, do planner e do papel de parede aparecem assim que você confirma o Pix.</p></details>
   </section>
 </main>
@@ -209,11 +217,11 @@
 
 <div class="story" id="story" hidden>
   <div class="folha-fundo" data-fechar-story></div>
-  <div class="story-painel" role="dialog" aria-modal="true" aria-label="Imagem para os Stories">
+  <div class="story-painel" role="dialog" aria-modal="true" aria-label="Imagem para compartilhar">
     <button class="folha-x" type="button" data-fechar-story aria-label="Fechar">×</button>
-    <img id="storyImg" alt="Imagem para os Stories com o seu plano">
-    <p>Toque e segure para salvar. Depois poste nos Stories ou no status do WhatsApp.</p>
-    <button class="btn bloco" id="storyCompartilhar" type="button">Compartilhar imagem</button>
+    <img id="storyImg" alt="Imagem com o seu plano para compartilhar">
+    <p>Toque em Compartilhar e escolha o WhatsApp. Dá pra mandar para a família ou pôr no seu status.</p>
+    <button class="btn bloco" id="storyCompartilhar" type="button">Compartilhar</button>
   </div>
 </div>
 
@@ -228,6 +236,7 @@
 
 <script src="/js/plano.js"></script>
 <script src="/vendor/qrcode.js" defer></script>
+<script defer src="/_vercel/insights/script.js"></script>
 <script src="/js/cards.js" defer></script>
 <script src="/js/app.js" defer></script>
 </body>

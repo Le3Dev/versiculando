@@ -138,12 +138,21 @@
       $('#durs').querySelectorAll('input').forEach((i) => { const pl = P.gerar({ ...o, d: +i.value }); i.nextElementSibling.querySelector('small').textContent = pl.minMedio + ' min por dia'; });
     }
     const plano = P.gerar(o);
-    capa(o, plano); previa(o, plano);
+    capa(o, plano); previa(o, plano); resumoMais(o);
     const c = compraAtual(o);
     $('#oferta').hidden = !!c; $('#entrega').hidden = !c;
     if (c) entregar(c, false);
     salvar();
   }
+
+  function resumoMais(o) {
+    const ORD = st.g === 'S' ? P.ORDENS_S : P.ORDENS;
+    const ordem = P.OBJETIVOS[st.g].ordens.length > 1 ? ORD[o.o] + '. ' : '';
+    const quando = o.s === hoje ? 'começando hoje' : 'começando em ' + P.dataLonga(o.s);
+    const hh = (st.h || '07:00').replace(/^0/, '').replace(':00', 'h').replace(':', 'h');
+    $('#maisResumo').textContent = `${ordem}${P.SEMANA[o.w]}, ${quando}. Lembrete às ${hh}.`;
+  }
+  $('#btnVer').addEventListener('click', () => { $('#previa').scrollIntoView({ behavior: 'smooth', block: 'start' }); });
 
   /* ---------- eventos do formulário ---------- */
   $('#nome').value = st.nome; $('#presente').checked = st.presente; $('#de').value = st.de; $('#msg').value = st.msg; $('#hora').value = st.h;
@@ -152,7 +161,7 @@
   $('#presente').addEventListener('change', (e) => { st.presente = e.target.checked; $('#presenteBox').hidden = !st.presente; $('#nome').placeholder = st.presente ? 'Nome de quem vai ganhar' : 'Nome que vai na capa'; tudo(false); });
   $('#de').addEventListener('input', (e) => { st.de = e.target.value.replace(/[<>]/g, ''); tudo(false); });
   $('#msg').addEventListener('input', (e) => { st.msg = e.target.value; salvar(); });
-  $('#hora').addEventListener('change', (e) => { st.h = e.target.value || '07:00'; salvar(); });
+  $('#hora').addEventListener('change', (e) => { st.h = e.target.value || '07:00'; resumoMais(opcoes()); salvar(); });
   $('#montar').addEventListener('change', (e) => {
     const t = e.target; if (t.type !== 'radio' && t.id !== 'dataOutra') return;
     if (t.name === 'g') { st.g = t.value; tudo(true); return; }
@@ -174,7 +183,7 @@
     storyCanvas = await window.Cards.story({ o, nome: st.presente ? '' : st.nome.trim() });
     const b = await window.Cards.blob(storyCanvas); $('#storyImg').src = URL.createObjectURL(b);
   });
-  $('#storyCompartilhar').addEventListener('click', async () => { if (storyCanvas) { const r = await window.Cards.compartilhar(storyCanvas, 'meu-plano-biblia.png', 'Bora ler junto? versiculando.vercel.app'); if (r === 'baixado') toast('Imagem salva'); } });
+  $('#storyCompartilhar').addEventListener('click', async () => { if (storyCanvas) { const r = await window.Cards.compartilhar(storyCanvas, 'meu-plano-biblia.png', 'Vou ler a Bíblia com um plano em 2027. Bora junto? Monte o seu em versiculando.vercel.app'); if (r === 'baixado') toast('Imagem salva'); } });
   document.addEventListener('click', (e) => { if (e.target.closest('[data-fechar-story]')) $('#story').hidden = true; });
 
   /* ---------- Pix ---------- */
@@ -257,6 +266,11 @@
     // papel de parede
     wallCanvas = await window.Cards.wallpaper({ o, nome: c.n });
     const b = await window.Cards.blob(wallCanvas); $('#wallImg').src = URL.createObjectURL(b);
+    const abs = (u) => location.origin + u;
+    const linhas = [`Meu plano de leitura da Bíblia${c.de ? ' (presente para ' + c.n + ')' : ''}: ${G.nome} em ${P.DURACAO[o.d]}`, '',
+      'Planner para imprimir:', abs('/api/planner?' + pdfQ), '', 'Leitura de hoje:', abs('/hoje?' + hojeQ), '', 'Pôr no calendário:', abs(IOS ? ics : google)];
+    if (c.de) linhas.push('', 'Link do presente:', presente);
+    $('#guardarZap').href = 'https://wa.me/?text=' + encodeURIComponent(linhas.join('\n'));
     $('#navHoje').hidden = false; $('#navHoje').href = '/hoje?' + hojeQ;
     if (rolar) { $('#entrega').scrollIntoView({ behavior: 'smooth', block: 'start' }); $('#entrega').focus({ preventScroll: true }); toast('Pagamento confirmado. Seu plano está pronto.'); }
   }

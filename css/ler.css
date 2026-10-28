@@ -1,4 +1,4 @@
-:root{--tam:19px}
+:root{--tam:20px}
 .barra{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid var(--linha);padding-top:calc(10px + env(safe-area-inset-top));padding-bottom:10px}
 .barra-acoes{display:flex;gap:6px}
 .ic-btn{appearance:none;border:0;background:var(--fraco);width:44px;height:44px;border-radius:12px;cursor:pointer;display:grid;place-items:center;font-weight:700;font-size:17px;line-height:1}

@@ -20,7 +20,7 @@
   const hoje = P.hojeIso();
 
   /* ---------- tamanho da letra ---------- */
-  let tam = store.get('vers_tam', 19);
+  let tam = store.get('vers_tam', 20);
   const aplicaTam = () => document.documentElement.style.setProperty('--tam', tam + 'px');
   aplicaTam();
   $('#btnMenor').onclick = () => { tam = Math.max(15, tam - 1); aplicaTam(); store.set('vers_tam', tam); };
